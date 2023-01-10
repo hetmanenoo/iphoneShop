@@ -1,0 +1,76 @@
+{% extends "mainsite/base.html" %}
+{% load static socialaccount account %}
+
+
+{% block content %}
+   
+    <div class="container-fluid page_boby">
+        <div class="row">
+            <div class="col-12 align-items-center">
+                <div class="d-flex justify-content-center"><h1>Увійти</h1></div>    
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 align-items-center">
+                <div class="d-flex justify-content-center">
+                    <div class="row">
+                        <div class="col-12">
+                            {% comment %} <h1>"Sign In" </h1> {% endcomment %}
+
+                            {% comment %} {% get_providers as socialaccount_providers %} {% endcomment %}
+
+                            {% if socialaccount_providers %}
+                            
+
+                            <div class="socialaccount_ballot">
+
+                            <ul class="socialaccount_providers">
+                                {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                            </ul>
+
+                            <div class="login-or">or</div>
+
+                            </div>
+
+                            {% include "socialaccount/snippets/login_extra.html" %}
+
+                        
+                            {% endif %}
+
+                            <form class="login" method="POST" action="{% url 'account_login' %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            {% if redirect_field_value %}
+                            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                            {% endif %}
+                            <a class="btn btn-outline-secondary" href="{% url 'account_reset_password' %}">Забули пароль?</a>
+                            <button class="btn btn-success" type="submit">Увійти</button>
+                            </form>
+                        </div>
+                        <div class="col-12 my-3">
+                            
+                            <a class="btn btn-primary"href="{% provider_login_url "google" %}" role="button"> 
+                                <div class="container-fluid">    
+                                    <div class="row">
+                                        <div class="d-flex justify-content-strat align-self-center col-3">
+
+                                            <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                                        </div>
+                                        <div class="d-flex justify-content-end col-9">
+                                            Увійти через гугл Google       
+                                        </div>          
+                                    </div>
+                                </div>          
+                            </a>
+                            
+                        </div>
+                        <div class="col-12">
+                            <a href="{% url 'account_signup' %}">Створити акаунт</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+{% endblock %}

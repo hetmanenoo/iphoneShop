@@ -1,0 +1,40 @@
+{% extends "mainsite/base.html" %}
+{% load static %}
+{% block head %}
+
+<title>{{title}}</title>
+{% endblock %}
+
+{% block content %}
+    <!-- Наповненння  -->
+    <div class="container page_boby">
+        <div class="row">
+            <div class="col-6 d-flex justify-content-start">
+                
+                    <img  src="{{items.photo.url}}" class="card-img-top" alt="...">
+                </div>
+                
+                <div class="col-6 d-flex justify-content-start">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-start"><h1>{{items.title}}</h1></div>
+                                <ul style="list-style-type: none; margin:0" class="m-0">
+                                    <li>{{items.info}}</li>
+                                    <li><h3 class='my-3'>{{items.price}} грн</h3></li>
+                                    
+                                </ul>
+                                <form action="{% url 'cart:cart_add' items.id %}" method="post">
+                                    {{ cart_product_form }}
+                                    {% csrf_token %}
+                                    <input class="btn btn-success" type="submit" value="Додати в корзину">
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>    
+            
+        </div>
+        
+{% endblock %}

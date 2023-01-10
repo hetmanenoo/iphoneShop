@@ -1,0 +1,142 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+    
+
+   
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+ 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <link type="text/css" href="style/style.css" rel="stylesheet">
+    
+    <title>Iphone Shop</title>
+
+</head>
+<body>
+        <div class="container-fluid headbar">
+            
+                <div class="row align-items-center h-100 pt-4 pb-4">
+                    <div class="d-flex justify-content-center col-md-2 col-sm-12 pb-sm-2">
+                        <a class="logo_text fs-3 nav_text" href="#">Iphone Store</a>
+                    </div>        
+                    <div class="d-flex justify-content-center col-md-5 col-sm-12 pb-sm-2">
+                            <div class="form_1">
+                                <form class="d-flex" role="search">                                
+                                        <input type="text" class="form-control form-input" placeholder="Пошук...">
+                                        <button class="btn btn-primary mx-2" style="background-color: gray; border:0;" type="button">Шукати</button>
+                                </form>
+                            </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center col-md-3 col-sm-12 pb-sm-2 ">
+                        <!-- <div class="container text-center"> -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-basket3-fill" viewBox="0 0 16 16">
+                                <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.468 15.426.943 9h14.114l-1.525 6.426a.75.75 0 0 1-.729.574H3.197a.75.75 0 0 1-.73-.574z"/>
+                            </svg> 
+                            <div class="px-1 nav_text pt-1">
+                                Корзина
+                            </div>
+                        <!-- </div>     -->
+                    </div>
+                    
+                    <div class="d-flex justify-content-center col-md-2 col-sm-12 pb-sm-2 nav_text">
+                        Увійти
+                    </div>
+
+                </div>
+            
+        </div>
+
+    <!-- </nav> -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary mb-4 ">
+        <div class="container-fluid">
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Головна</a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Магазин
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Iphone</a></li>
+                        <li><a class="dropdown-item" href="#">Macbook</a></li>
+                        <li><a class="dropdown-item" href="#">Watch</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Аксесуари</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Контакти</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Співпраця</a>
+                </li>
+            </ul>
+            
+            </div>
+        </div>
+    </nav>
+
+    <!-- Наповненння  -->
+    <div class="container-fluid page_boby">
+        <div class="row">
+            <div class="col-12 align-items-center">
+                <div class="d-flex justify-content-center"><h1>Увійти</h1></div>    
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 align-items-center">
+                <div class="d-flex justify-content-center">
+                    <form class="w-50">
+                        <!-- 
+                        <div class="form-group mt-3">
+                            <label for="formGroupExampleInput">Ім'я</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Username">
+                        </div>
+                        
+                          <div class="form-group mt-3">
+                            <label for="exampleInputPassword1">Введіть пароль</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                          </div>
+                        
+                        <div class="d-flex justify-content-center mt-3">   
+                            <button type="submit" class="btn btn-primary">Увійти</button>
+                        </div> -->
+                        <form class="login" method="POST" action="{% url 'account_login' %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            {% if redirect_field_value %}
+                            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                            {% endif %}
+                            <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                            <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+                        </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

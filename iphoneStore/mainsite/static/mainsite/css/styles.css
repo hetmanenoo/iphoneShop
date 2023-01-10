@@ -1,0 +1,165 @@
+@import url("https://fonts.google.com/specimen/Comfortaa?preview.text=%D0%A3%D0%B2%D1%96%D0%B9%D1%82%D0%B8&preview.text_type=custom");
+
+body{
+  background-color: #f5f5f5;
+}
+
+/* .sing_url{
+    color: #8d8176;
+    text-decoration: none !important;
+    border: none !important;
+    
+} */
+
+
+.logo_text{
+    color: white;
+
+}
+
+.logo_text:hover{
+    color: white; /*Колір при наведені на текст лого*/
+}
+
+.headbar{
+    background-color: #5f6d92;
+    height: auto;
+    font-family: Comfortaa, sans-serif;
+}
+
+.nav_text{
+  color: white;
+  text-decoration: none;
+
+}
+
+h1{
+    color: rgb(20, 20, 20);
+}
+
+.second_nav{
+    background-color: #f5f5f5;
+    
+}
+
+.nav-pills > li > a.active_page {
+    color: #484a47 !important;
+  }
+  
+  .nav-pills > li > a:hover {
+    color: #878b85 !important;
+  }
+  
+  .nav-link {
+    color: #080808;
+  }
+
+  .object1{
+    background-color: red;
+
+  }
+  .object2{
+    background-color: rgb(0, 255, 0);
+    border: #080808;
+  }
+  .object3{
+    background-color: rgb(25, 0, 255);
+    border: #080808;
+  }
+  .object4{
+    background-color: rgb(255, 0, 191);
+    border: #080808;
+  }
+
+  .form_1{
+    width: 60%;
+  }
+
+  .left_menu{
+    background-color: #ffffff;
+  }
+  .list-menu ul{
+    list-style-type: none;
+  }
+
+  .filtre_text{
+    font-weight: bold;
+  }
+
+  .line_color hr{
+    color: black;
+  }
+
+ 
+
+  .range-filter {
+    padding-top:10px;
+    width:240px;
+    margin:auto;
+    margin-bottom:10px;
+}
+.range-controls {
+    position:relative;
+    height:80px;
+    margin-bottom:15px;
+    padding:0 30px;
+    background:#34495e;
+    border-radius:5px;
+    overflow:hidden;
+}
+.scale {
+    margin-top:39px;
+    height:2px;
+    background:#d7dcde;
+}
+.bar{
+    height:2px;
+    background:#00ca74;
+}
+.toggle {
+    position:absolute;
+    top:30px;
+    left:30px;
+    width:4px;
+    height:4px;
+    border:8px solid white;
+    background:#ababab;
+    cursor:pointer;
+    border-radius:50%;
+}
+.min-toggle {
+    left:70px;
+}
+.max-toggle {
+    left:165px;
+}
+.price-controls input{
+    width:55px;
+    padding:8px 10px;
+    margin-left:10px;
+    border:none;
+    background:#34495e;
+    font-size:16px;
+    font-family:"Tahoma", sans-serif;
+    text-align:center;
+    color:#283136;
+    border-radius:5px;
+    color:white;
+}
+
+.min-price {
+    margin-right:14px;
+}
+
+.shop_item{
+  background-color:#ffffff;
+}
+
+.main_conteiner{
+  align-items: flex-start
+}
+
+.profile_info{
+  list-style-type: none;
+}
+

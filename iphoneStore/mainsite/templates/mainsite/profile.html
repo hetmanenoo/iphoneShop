@@ -1,0 +1,35 @@
+{% extends "mainsite/base.html" %}
+{% load static %}
+{% block head %}
+
+<title>{{title}}</title>
+{% endblock %}
+
+{% block content %}
+    <!-- Наповненння  -->
+    <div class="container page_boby">
+        <div class="row">
+            <div class="col-12 align-items-center">
+                <div class="d-flex justify-content-center"><h1>Профіль</h1></div>    
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 align-items-center">
+                <div class="d-flex justify-content-start">
+                    <div>
+                        <ul class="profile_info">
+                            <li class="my-2">Ім'я - {{user.username}} </li>
+                            <li class="my-2">Email - {{user.email}}</li>
+                            <li class="my-2">Дата реєстрації - {{user.date_joined}}</li>
+                            
+                            <li class="my-2"><a href="#">Змінити пароль   </a> Comming soon..</li>  {% comment %} {% url 'account_reset_password' %}{% endcomment %}
+                            <li class="my-2"><a class="btn btn-primary" href="{% url 'account_logout' %}" role="button">Вийти</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+{% endblock %}

@@ -1,0 +1,170 @@
+
+{% extends "mainsite/base.html" %}
+{% load static %}
+
+{% block head %}
+
+    <title>{{title}}</title>
+{% endblock %}
+
+
+{% block content %}
+        <div class="d-flex row main_conteiner">
+            <div class="col-md-12 col-sm-12 col-lg-2 mt-md-5 m-sm-0 ms-lg-5 left_menu "> 
+                <!-- Забрати маржин при малому екрані верхня стрічка -->
+                <div class="list-menu pt-3">
+                    <ul>
+                        {% for c in cats %}
+                            <div class="pb-3"><li><a class="dropdown-item" href="{{ c.get_absolute_url }}">{{c.name}}</a></li></div>
+
+                        {% endfor %}
+                        {% comment %} <div class="pb-3"><li>iPhone</li></div>
+                        <div class="pb-3"><li>iWatch</li></div>
+                        <div class="pb-3"><li>MacBook</li></div> {% endcomment %}
+                    </ul>
+                </div>
+
+                <div class="pl-5 list-menu">
+                    <ul>
+                        <div class="filtre_text"><li>Фільтри</li></div>
+                    </ul>
+                </div>
+                <div class="text-success line_color">
+                    <hr>
+                </div>
+                <div class="list-menu pb-5">
+                    <ul>
+                        <div class="pb-3"><li>Ціна</li></div>
+
+                        <div class="pb-3"><li>
+
+
+                            <form method="get">
+                                <div class="row">
+                                <div class="col-12 my-1">
+                                    <input type="number" class="form-control" placeholder="Мін." name="min_price" required>
+                                </div>
+                                <div class="col-12 my-1">
+                                    <input type="number" class="form-control" placeholder="Макс." name="max_price" required>
+                                </div>
+                                </div>
+                                 <div class="pb-3">
+                                    <li>
+                                        <button type="submit" class="btn btn-primary mb-2">Пошук</button>
+                                    </li>
+                                </div>
+                            </form>
+
+                        </li></div>
+                       
+                    </ul>
+                    <ul>
+                        <div class="filtre_text"><li><a href="{% url 'catalog' %}">Скинути фільтри</a></li></div>
+                    </ul>
+
+                </div>         
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-lg-9 ms-md-3 mb-md-4 ms-sm-0">
+               
+                    <!-- <div class="row d-flex justify-content-around">
+                        <div class="col-lg-4 my-5 py-5 shop_item">Iphone X</div>
+                        <div class="col-lg-4 my-5 py-5 shop_item">Iphone X</div>
+                        <div class="col-lg-4 my-5 py-5 shop_item">Iphone X</div>
+                        
+                        
+                    
+                    </div> -->
+                    <div class="mt-sm-3" >
+                        <h2>Катaлог</h2>
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                    {% for i in page_obj %}
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="{{i.photo.url}}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><a  href="{{ i.get_absolute_url }}">{{i.title}}</a></h5>
+                                
+                                    <p class="card-text">{{i.info}}</p>
+                                    <div class="text-success line_color">
+                                        <hr>
+                                    </div>
+
+                                    <h4>{{i.price}} грн.</h4>
+                                    
+                                    <div class="mt-3">
+                                        <form action="{% url 'cart:cart_add_home' i.id %}" method="post">
+                                            {{ cart_product_form }}
+                                            {% csrf_token %}
+                                            <input class="btn btn-success" type="submit" value="Додати в корзину">
+                                        </form>
+                                        <a href="{{ i.get_absolute_url }}" class="btn btn-primary my-2">Переглянути</a>
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                        
+                    
+                    {% endfor %}
+                        
+                    
+
+                    </div>
+            
+            </div>
+            <div class="row">
+                <div class="d-flex justify-content-center col-12">
+                            
+                    <ul>
+                    <nav aria-label="...">
+                        <ul class="pagination">
+                        {% if page_obj.has_other_pages %}
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Назад</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled">
+                                    <a class="page-link">Назад</a>
+                                </li>
+                            {% endif %}
+                                
+                            {% for p in page_obj.paginator.page_range %}
+                                 {% if page_obj.number == p %}
+                                    <li class="page-item active">
+                                        <a class="page-link"href="?page={{ p }}">{{ p }}</a>
+                                    </li>
+                                 {% else %}
+                                    <li class="page-item">
+                                        <a class="page-link"href="?page={{ p }}">{{ p }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %} 
+                            
+                            
+                            {% comment %} <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="#">2</a>
+                            </li> {% endcomment %}
+                            
+                            
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Далі</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled">
+                                    <a class="page-link">Далі</a>
+                                </li>
+                            {% endif %}
+                            
+                        {% endif %}
+                        
+                        </ul>
+                        </nav>
+                    </ul>
+                </div>    
+            </div>
+        </div>
+
+{% endblock %}

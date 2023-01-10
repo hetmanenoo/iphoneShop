@@ -1,0 +1,70 @@
+{% extends "mainsite/base.html" %}
+{% load static socialaccount account %}
+
+
+{% block content %}
+    <!-- Наповненння  -->
+    <div class="container-fluid page_boby">
+        <div class="row">
+            <div class="col-12 align-items-center">
+                <div class="d-flex justify-content-center"><h1>Зареєструватися</h1></div>    
+            </div>
+        </div>
+
+        {% comment %} <div class="row">
+            <div class="col-12 align-items-center">
+                <div class="d-flex justify-content-center">
+                    <form class="w-50">
+                        <div class="form-group mt-3">
+                            <label for="formGroupExampleInput">Ім'я</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Username">
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="exampleInputEmail1">Електронна адреса</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                            <small id="emailHelp" class="form-text text-muted">Дані захищенно</small>
+                          </div>
+                          <div class="form-group mt-3">
+                            <label for="exampleInputPassword1">Введіть пароль</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                          </div>
+                        <div class="form-group mt-3">
+                            <label for="formGroupExampleInput2">Повторіть пароль</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Password">
+                        </div>
+                        <div class="d-flex justify-content-center mt-3">   
+                            <button type="submit" class="btn btn-primary">Зареєструватися</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+         {% endcomment %}
+
+        <div class="row">
+            <div class="col-12 align-items-center">
+                <div class="d-flex justify-content-center">
+                    <div class="row">
+                        <div class="col-12">
+                           
+                            <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            {% if redirect_field_value %}
+                            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                            {% endif %}
+                            <button class="btn btn-success" type="submit">Зареєструватись</button>
+                            </form>
+
+                        </div>
+                         <div class="col-12 my-3">
+                            <a class="btn btn-primary"href="{% provider_login_url "google" %}" role="button">Увійти через гугл Google</a>
+                        </div>
+                        <div class="col-12">
+                            <a href="{% url 'account_login' %}">Уже є акаунт?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+{% endblock %}
