@@ -3,16 +3,16 @@ from catalog.models import Items
 
 
 class Order(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField()
-    address = models.CharField(max_length=250)
-    postal_code = models.CharField(max_length=20)
-    city = models.CharField(max_length=100)
-    data_created = models.DateTimeField(auto_now_add=True)
-    data_updated = models.DateTimeField(auto_now=True)
-    paid = models.BooleanField(default=False)
-    _id = models.AutoField(primary_key=True, editable=False)
+    first_name = models.CharField(max_length=50, verbose_name='І\'мя')
+    last_name = models.CharField(max_length=50, verbose_name='Прізвище')
+    email = models.EmailField(verbose_name='Email')
+    address = models.CharField(max_length=250, verbose_name='Адреса')
+    postal_code = models.CharField(max_length=20, verbose_name='Поштовий індекс')
+    city = models.CharField(max_length=100, verbose_name='Місто')
+    data_created = models.DateTimeField(auto_now_add=True, verbose_name='Дата створення')
+    data_updated = models.DateTimeField(auto_now=True, verbose_name='Дата оновлення')
+    paid = models.BooleanField(default=False, verbose_name='Статус оплати')
+    _id = models.AutoField(primary_key=True, editable=False, verbose_name='Id')
 
     class Meta:
         ordering = ('-data_created',)

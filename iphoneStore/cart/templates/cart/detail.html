@@ -25,7 +25,7 @@
             <tbody>
             
             {% for i in cart %}
-                    <tr>
+                    <tr class="align-middle">
                         
                         <td>
                             <a href="{{ i.get_absolute_url }}">
@@ -46,12 +46,12 @@
                             {{ i.update_quantity_form.quantity }}
                             {{ i.update_quantity_form.update }}
                             
-                            <input class="btn btn-success" type="submit" value="Оновити">
+                            <input class="btn btn-outline-success" type="submit" value="Оновити">
                             {% csrf_token %}
                         </form>
                         </td>
                         
-                        <td><a href="{% url "cart:cart_remove" items_id=i.items.id %}">Видалити</a></td>
+                        <td><a class="btn btn-outline-danger" href="{% url "cart:cart_remove" items_id=i.items.id %}">Видалити</a></td>
                         <td class="num">{{ i.price }} грн</td>
                         <td class="num">{{ i.total_price }} грн</td>
                     </tr>
@@ -69,7 +69,7 @@
             </tr>
             </tbody>
         </table>
-        <a href="{% url "orders:order_create" %}" class="button">
+        <a href="{% url "orders:order_create" %}" class="btn btn-success">
             Оформити замовлення
         </a>
     {% else %}

@@ -18,7 +18,7 @@
     </div>
     <form action="." method="post" class="order-form">
         {{ form.as_p }}
-        <p><input type="submit" value="Оформити замовлення"></p>
+        <p><input class="btn btn-success" type="submit" value="Оплатити замовелення замовлення"></p>
         {% csrf_token %}
     </form>
 {% endblock %}

@@ -11,6 +11,9 @@ body{
     
 } */
 
+a{
+  text-decoration: none;
+}
 
 .logo_text{
     color: white;

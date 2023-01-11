@@ -1,0 +1,16 @@
+{% extends "mainsite/base.html" %}
+
+
+
+{% block content %}
+    <h1>Оплатити замовлення</h1>
+    <p>Номер - № <strong>{{ id }}</strong></p>
+
+    <form action="{% url 'payment:payment_success' id %}" method="post" class="order-form">
+        {% csrf_token %}
+        <p><input class="btn btn-success" type="submit" value="Оплатити"></p>
+        
+    </form>
+
+       
+{% endblock %}

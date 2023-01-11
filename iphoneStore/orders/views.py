@@ -17,12 +17,13 @@ def order_create(request):
                                          product=item['items'],
                                          price=item['price'],
                                          quantity=item['quantity'])
-            # очистка корзины
-            cart.clear()
-            print(order._id, 312321)
-            return render(request, 'orders/created.html',
+            
+            # cart.clear()
+            # print(order._id, 312321)
+            return render(request, 'payment/payment.html',
                           {'order': order, 'id':order._id})
     else:
+        
         form = OrderCreateForm
     return render(request, 'orders/create.html',
                   {'cart': cart, 'form': form})
