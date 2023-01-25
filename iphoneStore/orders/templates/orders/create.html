@@ -4,21 +4,37 @@
 
 {% block content %}
     <h1>Оформлення замовлення</h1>
-    <div class="order-info">
-        <h3>Твоє замовлення</h3>
-        <ul>
-            {% for item in cart %}
-                <li>
-                    {{ item.quantity }} x {{ item.items }}
-                    <span>- {{ item.total_price }} грн</span>
-                </li>
-            {% endfor %}
-        </ul>
-        <p>Загальна: {{ cart.get_total_price }} грн</p>
-    </div>
+    {% if user.is_authenticated %}
+        <div class="order-info">
+            <h3>Твоє замовлення</h3>
+            <ul>
+                {% for item in cart %}
+                    <li>
+                        {{ item.quantity }} x {{ item.product }}
+                        <span>- {{ item.price }} грн</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p>Загальна сума: {{ total_price }} грн</p>
+        </div>
+    {% else %}
+        <div class="order-info">
+            <h3>Твоє замовлення</h3>
+            <ul>
+                {% for item in cart %}
+                    <li>
+                        {{ item.quantity }} x {{ item.items }}
+                        <span>- {{ item.total_price }} грн</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p>Загальна сума: {{ cart.get_total_price }} грн</p>
+        </div>
+    {% endif %}
     <form action="." method="post" class="order-form">
         {{ form.as_p }}
-        <p><input class="btn btn-success" type="submit" value="Оплатити замовелення замовлення"></p>
+        <p><input class="btn btn-success" type="submit" value="Перейти до оплати"></p>
         {% csrf_token %}
     </form>
+    
 {% endblock %}

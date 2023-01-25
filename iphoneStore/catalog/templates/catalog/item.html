@@ -23,7 +23,7 @@
                                     <li><h3 class='my-3'>{{items.price}} грн</h3></li>
                                     
                                 </ul>
-                                <form action="{% url 'cart:cart_add' items.id %}" method="post">
+                                <form action="{% if user.is_authenticated %}{% url 'cart:cart_add_auth' items.id %}{% else %} {% url 'cart:cart_add_home' items.id %} {% endif %}" method="post">
                                     {{ cart_product_form }}
                                     {% csrf_token %}
                                     <input class="btn btn-success" type="submit" value="Додати в корзину">

@@ -2,14 +2,17 @@ from decimal import Decimal
 from django.conf import settings
 from catalog.models import Items
 
+
+
 class Cart(object):
 
     def __init__(self, request):
        
         self.session = request.session
+        
         cart = self.session.get(settings.CART_SESSION_ID)
         if not cart:
-            # save an empty cart in the session
+            
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
 
@@ -45,12 +48,15 @@ class Cart(object):
         itemses = Items.objects.filter(id__in=items_ids)
         for item in itemses:
             self.cart[str(item.id)]['items'] = item # type: ignore #problem 
+            
+
 
         for item in self.cart.values():
             item['price'] = Decimal(item['price'])
             item['total_price'] = item['price'] * item['quantity']
+
             yield item
-        
+            
     
     def __len__(self):
         

@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-!%z3&wdw7f6upn2i5u%n4y410!43f)mwyk0i79hvgsrcv&en_v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -161,3 +161,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
+
+LIQPAY_PUBLIC_KEY = 'sandbox_i61140269699'
+
+LIQPAY_PRIVATE_KEY = 'sandbox_W7c3LC37aEVZvq26kMNyrNytJ8fiqjAnjaxHH1Qd'

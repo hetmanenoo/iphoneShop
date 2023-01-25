@@ -42,7 +42,7 @@
                         
                         <td>
                         {{ i.quantity }}
-                        <form action="{% url 'cart:cart_add' i.items.id %}" method="post">
+                        <form action="{% url 'cart:cart_add_home' i.items.id %}" method="post">
                             {{ i.update_quantity_form.quantity }}
                             {{ i.update_quantity_form.update }}
                             
@@ -58,10 +58,10 @@
                 
             {% endfor %}
             <tr>
-                <td>Total</td>
+                <td>Загальне</td>
                 <td colspan="1"></td>
                 {% with total_items=cart|length %}
-                    <td> {{ cart|length }} </td>
+                    <td> {{ cart|length }} од. </td>
                 {% endwith %}
                 <td colspan="2"></td>
                 <td class="num">{{ cart.get_total_price }} грн</td>

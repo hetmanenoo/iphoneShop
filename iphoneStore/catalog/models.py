@@ -3,6 +3,7 @@ from django.urls import reverse
 
 # Create your models here.
 class Items(models.Model):
+   
     title = models.CharField(max_length=255)
     info = models.TextField(blank=True)
     photo = models.ImageField(upload_to="photos") #photos/%y/%m/%d/ сортування фото по даті створення

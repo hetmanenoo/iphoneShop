@@ -94,18 +94,35 @@
                                     <h4>{{i.price}} грн.</h4>
                                     
                                     <div class="mt-3">
-                                        <form action="{% url 'cart:cart_add_home' i.id %}" method="post">
-                                            {{ cart_product_form }}
-                                            {% csrf_token %}
-                                            <input class="btn btn-success" type="submit" value="Додати в корзину">
-                                        </form>
+                                        
+                                        {% comment %} <form action="{% if user.is_authenticated %}{% url 'cart:cart_add_auth' i.id %}{% else %} {% url 'cart:cart_add_home' i.id %} {% endif %}" method="post">
+                                                {{ cart_product_form }}
+                                                {% csrf_token %}
+                                                <input class="btn btn-success" type="submit" value="Додати в корзину">
+                                            </form> {% endcomment %}
+                                         {% if user.is_authenticated %}
+                                            <form action="{% url 'cart:cart_add_auth' i.id %}" method="post">
+                                                {{ cart_product_form }}
+                                                {% csrf_token %}
+                                                <input class="btn btn-success" type="submit" value="Додати в корзину">
+                                            </form>
+                                        {% else %}
+                                            
+                                            <form action="{% url 'cart:cart_add_home' i.id %}" method="post">
+                                            
+                                                {{ cart_product_form }}
+                                                {% csrf_token %}
+                                                <input class="btn btn-success" type="submit" value="Додати в корзину">
+                                            </form>
+
+                                        {% endif %}
+
                                         <a href="{{ i.get_absolute_url }}" class="btn btn-primary my-2">Переглянути</a>
                                     </div>    
                                 </div>
                             </div>
                         </div>
                         
-                    
                     {% endfor %}
                         
                     
@@ -122,7 +139,7 @@
                         {% if page_obj.has_other_pages %}
                             {% if page_obj.has_previous %}
                                 <li class="page-item">
-                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Назад</a>
+                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if min_price and max_price %}&min_price={{min_price}}&max_price={{max_price}}{% endif %}">Назад</a>
                                 </li>
                             {% else %}
                                 <li class="page-item disabled">
@@ -132,12 +149,15 @@
                                 
                             {% for p in page_obj.paginator.page_range %}
                                  {% if page_obj.number == p %}
-                                    <li class="page-item active">
+                                    {% comment %} <li class="page-item active">
                                         <a class="page-link"href="?page={{ p }}">{{ p }}</a>
+                                    </li> {% endcomment %}
+                                    <li class="page-item active">
+                                        <a class="page-link" href="?page={{p}}{% if min_price and max_price %}&min_price={{min_price}}&max_price={{max_price}}{% endif %}">{{ p }}</a>
                                     </li>
                                  {% else %}
                                     <li class="page-item">
-                                        <a class="page-link"href="?page={{ p }}">{{ p }}</a>
+                                       <a class="page-link" href="?page={{p}}{% if min_price and max_price %}&min_price={{min_price}}&max_price={{max_price}}{% endif %}">{{ p }}</a>
                                     </li>
                                 {% endif %}
                             {% endfor %} 
@@ -150,7 +170,7 @@
                             
                             {% if page_obj.has_next %}
                                 <li class="page-item">
-                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Далі</a>
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if min_price and max_price %}&min_price={{min_price}}&max_price={{max_price}}{% endif %}">Далі</a>
                                 </li>
                             {% else %}
                                 <li class="page-item disabled">

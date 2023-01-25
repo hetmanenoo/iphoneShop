@@ -1,0 +1,10 @@
+{% extends "mainsite/base.html" %}
+
+
+{% block content %}
+    <h1>Успішно оплачено!!!</h1>
+    {% csrf_token %}
+    <a href="{% url 'catalog' %}">Продовжити покупки</a>
+    
+
+{% endblock %}
