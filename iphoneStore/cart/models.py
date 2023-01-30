@@ -9,7 +9,7 @@ from iphoneStore import settings
 
 # Create your models here.
 class Cart_items_auth(models.Model):
-    _id = models.AutoField(primary_key=True, editable=False, verbose_name='Id')
+    # id = models.AutoField(primary_key=True, editable=False, verbose_name='Id')
     user = models.CharField(max_length=255)
     product = models.ForeignKey(Items, on_delete=models.PROTECT)
     quantity = models.CharField(max_length=255 ,default="")
@@ -23,7 +23,7 @@ class Cart_items_auth(models.Model):
 
 class Cart_user(models.Model):
 
-    _id = models.AutoField(primary_key=True, editable=False, verbose_name='Id')
+    # _id = models.AutoField(primary_key=True, editable=False, verbose_name='Id')
     total_price = models.CharField(max_length=255)
     total_quantity = models.CharField(max_length=255)
     add_datetime = models.DateTimeField(auto_now_add=True)
